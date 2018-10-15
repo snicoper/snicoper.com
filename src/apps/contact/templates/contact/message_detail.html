@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+{% load utils_tags %}
+
+{% block meta_description %}Detalles de {{ message.subject }}{% endblock meta_description %}
+{% block head_title %} - Detalles de {{ message.subject }}{% endblock head_title %}
+
+{% block page_title %}
+  <section class="jumbotron">
+    <section class="container">
+      <h1>Detalles del Mensaje</h1>
+    </section>
+  </section>
+{% endblock page_title %}
+
+{% block content %}
+  <section class="container">
+    <section class="row">
+      <div class="col-lg-10 m-auto">
+        <ul class="list-unstyled">
+          <li><strong>Asunto: </strong><small class="text-muted">{{ message.subject }}</small></li>
+          <li><strong>Email: </strong><small class="text-muted">{{ message.email }}</small></li>
+          <li>
+            <strong>Usuario registrado: </strong>
+            {% if message.is_register %}
+              <i class="material-icons md-4 text-success">check_circle</i>
+            {% else %}
+              <i class="material-icons md-4 text-danger">cancel</i>
+            {% endif %}
+          </li>
+          {% if message.is_register %}
+            <li>
+              <strong>Nombre de usuario:</strong>
+              <small class="text-muted">{{ username }}</small>
+            </li>
+          {% endif %}
+          <li>
+            <strong>Fecha: </strong>
+            <small class="text-muted">
+              {{ message.create_at|date:"SHORT_DATETIME_FORMAT" }}
+            </small>
+          </li>
+        </ul>
+
+        <hr>
+
+        <ul class="nav nav-tabs" role="tablist">
+          <li class="nav-item">
+            <a class="nav-link active" data-toggle="tab" href="#text" role="tab">Text</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#html" role="tab">HTML</a>
+          </li>
+        </ul>
+
+        <div class="tab-content">
+          <div class="tab-pane active" id="text" role="tabpanel">
+            <pre>
+<!-- Importante que este al principio de la linea! -->
+{{ message.message|escape }}
+            </pre>
+          </div>
+
+          <div class="tab-pane" id="html" role="tabpanel">
+            <div class="alert alert-info">
+              Los caracteres <code>&lt; &gt; &quot; &#39; &amp;</code> son escapados, y en bloques
+              <code>&lt;code&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/code&gt;</code>, pueden ser molestos.
+            </div>
+
+            <div>
+              {% markdown message.message safe=False %}
+            </div>
+          </div>
+        </div>
+
+        <hr>
+
+        <div>
+          <a class="btn btn-primary" href="{% url 'contact:message_list' %}">Volver a Mensajes</a>
+          {% if perms.contact_message_contact.can_delete %}
+            <a class="btn btn-danger"
+              target="_blank"
+              href="/admin/contact/contactmessage/{{ message.id }}/change/"
+            >
+              Delete
+            </a>
+          {% endif %}
+        </div>
+      </div>
+    </section>
+  </section>
+{% endblock content %}

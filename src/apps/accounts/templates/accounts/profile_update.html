@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load djtemplateforms_tags %}
+
+{% block meta_description %}Editar opciones{% endblock meta_description %}
+{% block head_title %}- Editar opciones{% endblock head_title %}
+
+{% block page_title %}
+  <section class="jumbotron">
+    <section class="container">
+      <h1>Editar opciones</h1>
+    </section>
+  </section>
+{% endblock page_title %}
+
+{% block content %}
+  <section class="container">
+    <section class="row">
+      <div class="col-lg-8 m-auto">
+        <form method="post" action="">
+          {% csrf_token %}
+          {% form form %}
+
+          <button class="btn btn-success" type="submit">Actualizar</button>
+          <a class="btn btn-primary" href="{% url 'accounts:profile' %}">Volver</a>
+        </form>
+      </div>
+    </section>
+  </section>
+{% endblock content %}

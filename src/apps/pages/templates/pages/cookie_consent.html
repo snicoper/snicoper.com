@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load utils_tags %}
+
+{% block meta_description %}Política de Cookies{% endblock meta_description %}
+{% block head_title %}- Política de Cookies{% endblock head_title %}
+
+{% block page_title %}
+  <section class="jumbotron">
+    <section class="container">
+      <h1>Política de Cookies en {{ SITE.name }}</h1>
+    </section>
+  </section>
+{% endblock page_title %}
+
+{% block content %}
+  <section class="container">
+    <section class="row">
+      <div class="col-lg-10 m-auto">
+        {% markdown template_md safe=True %}
+      </div>
+    </section>
+  </section>
+{% endblock content %}

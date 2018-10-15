@@ -1,0 +1,28 @@
+<div class="form-group {{ col|default:'col-lg-12' }} {% if klass_container %}{{ klass_container }}{% endif %}">
+  <label class="form-control-label" for="{{ field.id_for_label }}">
+    {{ label|default:field.label }}
+    {% if field.field.required %}
+      <small><sup class="asterisk-field">*</sup></small>
+    {% endif %}
+  </label>
+  <select id="{{ field.id_for_label }}"
+          class="form-control{% if field.errors %} is-invalid{% endif %}{% if klass %} {{ klass }}{% endif %}"
+          name="{{ field.name }}"
+          {% if widget_name == 'SelectMultiple' %}multiple="multiple"{% endif %}
+          {% if field.field.required %}required{% endif %}
+          {% if attrs %} {% include attrs_file %}{% endif %}
+          {% if extras %}{{ extras }}{% endif %}
+  >
+    {% for index, value in field.field.choices %}
+      <option value="{{ index }}"{% if field.value == index %}selected{% endif %}>
+        {{ value }}
+      </option>
+    {% endfor %}
+  </select>
+  {% if field.help_text %}
+    <small class="help-block">{{ field.help_text|safe }}</small>
+  {% endif %}
+  {% if field.errors %}
+    {{ field.errors }}
+  {% endif %}
+</div>

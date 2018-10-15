@@ -1,0 +1,94 @@
+/**
+ * Los archivos se han de actualizar manualmente desde
+ * https://github.com/google/material-design-icons/tree/master/iconfont
+ *
+ * https://google.github.io/material-design-icons/
+ *
+ * Copiar el contenido de iconfont a src/static/dist/fonts/materialize/*
+ */
+
+@font-face {
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-weight: 400;
+  src: url(MaterialIcons-Regular.eot); /* For IE6-8 */
+  src:
+    local('Material Icons'),
+    local('MaterialIcons-Regular'),
+    url($material-icons-font-path + "MaterialIcons-Regular.woff2") format('woff2'),
+    url($material-icons-font-path + "MaterialIcons-Regular.woff") format('woff'),
+    url($material-icons-font-path + "MaterialIcons-Regular.ttf") format('truetype');
+}
+
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 1.3rem;
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+  vertical-align: middle;
+
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Support for IE. */
+  font-feature-settings: 'liga';
+
+  // Tamaños de los iconos.
+  &.md-1 {
+    font-size: 0.5rem;
+  }
+
+  &.md-2 {
+    font-size: 0.7rem;
+  }
+
+  &.md-3 {
+    font-size: 1rem;
+  }
+
+  &.md-4 {
+    font-size: 1.2rem;
+  }
+
+  &.md-5 {
+    font-size: 1.6rem;
+  }
+
+  &.md-6 {
+    font-size: 2rem;
+  }
+
+  &.md-7 {
+    font-size: 2.4rem;
+  }
+
+  // Colores de los iconos.
+  &.md-dark {
+    color: rgba(0, 0, 0, 0.54);
+
+    &.md-inactive {
+      color: rgba(0, 0, 0, 0.26);
+    }
+  }
+
+  &.md-light {
+    color: rgba(255, 255, 255, 1);
+
+    &.md-inactive {
+      color: rgba(255, 255, 255, 0.3);
+    }
+  }
+}

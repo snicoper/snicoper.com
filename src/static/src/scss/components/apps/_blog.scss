@@ -1,0 +1,30 @@
+.image-header {
+  width: 100%;
+  max-height: 350px;
+}
+
+.article-details {
+  .article-footer {
+    padding: 0.5rem;
+    background-color: gray("100");
+  }
+
+  .list-panel {
+    @extend .z-depth-2;
+
+    margin-top: 1rem;
+
+    .list-group-item-action {
+      padding: 0.4rem;
+      color: theme-color("secondary");
+
+      &:not(:first-child) {
+        border-top: 1px solid rgba(230, 230, 230, 0.6) !important;
+      }
+    }
+
+    .list-small {
+      font-size: 0.85rem;
+    }
+  }
+}

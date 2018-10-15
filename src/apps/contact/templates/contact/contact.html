@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load djtemplateforms_tags %}
+
+{% block meta_description %}Formulario de contacto{% endblock meta_description %}
+{% block head_title %}Contacta{% endblock head_title %}
+
+{% block page_title %}
+  <section class="jumbotron">
+    <section class="container">
+      <h1>Formulario de contacto</h1>
+    </section>
+  </section>
+{% endblock page_title %}
+
+{% block content %}
+  <section class="container">
+    <section class="row">
+      <div class="col-lg-6 m-auto">
+        <form method="post" action="">
+          {% csrf_token %}
+          <div class="form-row">
+            {% form form %}
+          </div>
+          <button class="btn btn-primary" type="submit">Enviar</button>
+          <div class="small text-muted">
+            <strong>Markdown</strong> permitido <strong>HTML</strong> no permitido.
+          </div>
+        </form>
+
+      </div>
+    </section>
+  </section>
+{% endblock content %}

@@ -1,0 +1,8 @@
+Hola!
+
+Se ha añadido un nuevo articulo en {{ site_domain }}, para ver el articulo, pincha en el siguiente link:
+
+{{ link_article }}
+
+Si no deseas recibir mas alertas, por favor, dale al siguiente link para darte de baja:
+{{ link_unsigned }}

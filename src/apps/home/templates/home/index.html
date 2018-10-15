@@ -1,0 +1,120 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block meta_description %}Freelance desarrollo aplicaciones Web en Python/Django{% endblock meta_description %}
+{% block head_title %}- Inicio{% endblock head_title %}
+
+{% block page_title %}
+  <section class="jumbotron jumbotron-home">
+    <section class="container">
+      <h1>Desarrollo de aplicaciones Web</h1>
+      <p class="lead">Django/PostgreSQL, HTML y CSS, Jquery, Vue.js</p>
+    </section>
+  </section>
+{% endblock page_title %}
+
+{% block content %}
+  <section class="container">
+    <section class="row">
+      <div class="col-md-6 col-lg-4 mb-3">
+        <div class="card card-medium border-0 z-depth-1">
+          <img class="card-img-top"
+               src="{% static 'dist/img/home/django.png' %}"
+               alt="{{ article.title }}"
+          >
+
+          <div class="card-block d-flex flex-column">
+            <h5 class="card-title">{% lorem 4 w %}</h5>
+            <p class="card-text">
+              {% lorem 20 w %}
+            </p>
+
+            <div class="mt-auto text-center">
+              <a class="card-link" href="#">Link here</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4 mb-3">
+        <div class="card card-medium border-0 z-depth-1">
+          <img class="card-img-top"
+               src="http://fakeimg.pl/350x200"
+               alt="{{ article.title }}"
+          >
+
+          <div class="card-block d-flex flex-column">
+            <h5 class="card-title">{% lorem 4 w %}</h5>
+            <p class="card-text">
+              {% lorem 20 w %}
+            </p>
+
+            <div class="mt-auto text-center">
+              <a class="card-link" href="#">Link here</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4 mb-3">
+        <div class="card card-medium border-0 z-depth-1">
+          <img class="card-img-top"
+               src="http://fakeimg.pl/350x200"
+               alt="{{ article.title }}"
+          >
+
+          <div class="card-block d-flex flex-column">
+            <h5 class="card-title">{% lorem 4 w %}</h5>
+            <p class="card-text">
+              {% lorem 20 w %}
+            </p>
+
+            <div class="mt-auto text-center">
+              <a class="card-link" href="#">Link here</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4 mb-3">
+        <div class="card card-medium border-0 z-depth-1">
+          <img class="card-img-top"
+               src="http://fakeimg.pl/350x200"
+               alt="{{ article.title }}"
+          >
+
+          <div class="card-block d-flex flex-column">
+            <h5 class="card-title">{% lorem 4 w %}</h5>
+            <p class="card-text">
+              {% lorem 20 w %}
+            </p>
+
+            <div class="mt-auto text-center">
+              <a class="card-link" href="#">Link here</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4 mb-3">
+        <div class="card card-medium border-0 z-depth-1">
+          <img class="card-img-top"
+               src="http://fakeimg.pl/350x200"
+               alt="{{ article.title }}"
+          >
+
+          <div class="card-block d-flex flex-column">
+            <h5 class="card-title">{% lorem 4 w %}</h5>
+            <p class="card-text">
+              {% lorem 20 w %}
+            </p>
+
+            <div class="mt-auto text-center">
+              <a class="card-link" href="#">Link here</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </section>
+{% endblock content %}

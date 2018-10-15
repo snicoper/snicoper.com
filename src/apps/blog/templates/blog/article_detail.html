@@ -1,0 +1,193 @@
+{% extends "blog/base_blog.html" %}
+{% load staticfiles %}
+{% load utils_tags %}
+
+{% block mata_description %}{{ article.title }}{% endblock mata_description %}
+{% block head_title %} - detalles {{ article.title }}{% endblock head_title %}
+
+{% block blog_content %}
+  <!-- data -->
+  <span id="article-data"
+        data-article-id="{{ article.pk }}"
+        data-url-article-vote-details="{% url 'blog:upi_article_vote_details' article.pk %}"
+        data-url-article-vote-positive="{% url 'blog:upi_article_vote_positive' article.pk %}"
+        class="hidden">
+  </span>
+
+  <section class="container mt-4 article-details z-depth-1">
+    <!-- Image header -->
+    {% if article.image_header %}
+      <section class="row d-none d-xl-block mb-4">
+        <div class="col-12">
+          <div class="image-header-container">
+            <img class="image-header" src="{{ MEDIA_URL }}{{ article.image_header }}" alt="Image: {{ article.title }}">
+          </div>
+        </div>
+      </section>
+    {% endif %}<!-- Image header -->
+
+    <section class="row">
+      <!-- article -->
+      <article class="col-lg-9">
+        <header>
+          <h1 class="text-primary">{{ article.title }}</h1>
+          <div class="text-muted">
+            <small>
+              <i class="material-icons md-3">person</i> {{ article.owner.username }}
+              <span data-toggle="tooltip" title="{{ article.create_at|date:'SHORT_DATE_FORMAT' }}">
+                <i class="material-icons md-3">access_time</i> {{ article.create_at|timesince }}
+              </span>
+              {% if DISQUS_SHORTNAME %}
+                <a href="{{ article.get_absolute_url }}#disqus_thread">
+                  <span class="disqus-comment-count" data-disqus-identifier="{{ article.id }}"></span>
+                </a>
+              {% endif %}
+
+              {% if user.is_superuser %}
+                <i class="material-icons md-3">remove_red_eye</i> {{ article.views }}
+              {% endif %}
+            </small>
+          </div>
+          <hr>
+        </header>
+
+        <div>{% markdown article.body safe=True %}</div>
+
+        <footer class="article-footer">
+          {% for tag in article.tags.all %}
+            <a class="badge badge-primary" href="{% url 'blog:articles_by_tag' tag.slug %}">
+              {{ tag.title }}
+            </a>
+          {% endfor %}
+
+          {% if perms.blog_article.can_edit %}
+            <div class="float-right ml-4">
+              <a target="_blank" href="/admin/blog/article/{{ article.id }}/change/">
+                <i class="fa fa-pencil" aria-hidden="true"></i>
+              </a>
+            </div>
+          {% endif %}
+
+          <!-- Article votes -->
+          <div v-cloak id="article-ratio-vote-vue" class="float-right">
+              <i v-if="cam_vote_positive"
+                 @click="onVotePositive"
+                 class="material-icons cursor-pointer"
+                 data-toggle="tooltip"
+                 title="Me ha parecido útil el articulo">thumb_up</i>
+              <i v-else
+                 class="material-icons text-success"
+                 data-toggle="tooltip"
+                 title="Ya has votado este articulo!">thumb_up</i>
+              <span :class="{ 'small badge badge-primary mr-4': true, 'badge-success': positives }">
+                ${ positives }
+              </span>
+          </div><!-- end Article votes -->
+        </footer>
+
+        <div class="small text-muted mt-2">
+          <strong>Ultima actualización:</strong>
+          {{ article.update_at|date:'SHORT_DATETIME_FORMAT' }}
+        </div>
+      </article><!-- end article -->
+
+      <!-- bloque lateral -->
+      <div class="col-lg-3 d-none d-lg-block px-0 pr-2">
+          <div class="mt-4" data-toggle="tooltip" title="Descargar Fedora 27">
+            <a href="https://getfedora.org/">
+              <img class="z-depth-2 img-fluid" src="{% static 'dist/img/blog/fedora27.jpg' %}" alt="Get Fedora">
+            </a>
+          </div>
+
+          <div class="list-panel">
+            <div class="caption-title text-center">Artículos mas vistos</div>
+            <div class="list-group">
+              {% for most_view in article_most_view_list %}
+                <a class="list-group-item list-group-item-action list-small border-0"
+                   href="{% url 'blog:article_detail' most_view.slug %}">
+                  {{ most_view.title }}
+                </a>
+              {% endfor %}
+            </div>
+          </div>
+
+          <div class="list-panel">
+            <div class="caption-title text-center">Artículos mas votados</div>
+            <div class="list-group">
+              {% for most_view in article_most_vote_list %}
+                <a class="list-group-item list-group-item-action list-small border-0"
+                   href="{% url 'blog:article_detail' most_view.slug %}">
+                  {{ most_view.title }}
+                </a>
+              {% endfor %}
+            </div>
+          </div>
+
+          {% include "adsense/_blog_lateral.html" %}
+        </div><!-- end bloque lateral -->
+    </section>
+
+    <!-- pagination de artículos -->
+    <section class="row mt-4">
+      <div class="col-lg-9">
+        {% with article_previous=article.get_previous_by_create_at %}
+          {% if article_previous %}
+            <div class="float-left">
+              <a class="btn btn-secondary"
+                 data-toggle="tooltip"
+                 title="{{ article_previous.title }}"
+                 href="{% url 'blog:article_detail' article_previous.slug %}"
+              >
+                <i class="fa fa-chevron-left" aria-hidden="true"></i>
+                {{ article_previous.title|truncatewords:3 }}
+              </a>
+            </div>
+          {% endif %}
+        {% endwith %}
+
+        {% with article_next=article.get_next_by_create_at %}
+          {% if article_next %}
+            <div class="float-right">
+              <a class="btn btn-secondary"
+                 data-toggle="tooltip"
+                 title="{{ article_next.title }}"
+                 href="{% url 'blog:article_detail' article_next.slug %}"
+              >
+                {{ article_next.title|truncatewords:3 }} <i class="fa fa-chevron-right" aria-hidden="true"></i>
+              </a>
+            </div>
+          {% endif %}
+        {% endwith %}
+      </div>
+    </section><!-- end pagination de artículos -->
+
+    <!-- social icons -->
+    {% include "blog/_social_icons.html" %}
+
+    <!-- disqus -->
+    <section class="row disqus_comments mt-4">
+      <div class="col-lg-9">
+        {% include "blog/_disqus_comments.html" %}
+      </div>
+    </section><!-- end disqus -->
+  </section>
+{% endblock blog_content %}
+
+{% block scripts %}
+  <script>
+    ArticleRatioVoteVue();
+  </script>
+
+  {# Para obtener el numero de comentarios. #}
+  {% if DISQUS_SHORTNAME %}
+    <script>
+      /* * * DON'T EDIT BELOW THIS LINE * * */
+      (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = 'https://{{ DISQUS_SHORTNAME }}.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+      }());
+    </script>
+  {% endif %}
+{% endblock scripts %}

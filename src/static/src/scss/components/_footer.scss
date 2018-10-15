@@ -1,0 +1,48 @@
+footer.footer {
+  background-color: gray("900");
+  padding: 1rem;
+  margin-top: 1rem;
+  color: $white;
+
+  a {
+    color: gray("100");
+    text-decoration: none;
+
+    &:hover {
+      color: gray("500");
+    }
+  }
+
+  ul.links {
+    li {
+      margin-top: 0.4rem;
+
+      a {
+        font-size: 0.9rem;
+      }
+
+      i {
+        margin-right: 0.4rem;
+      }
+    }
+  }
+
+  .copy {
+    background-color: lighten($black, 12%);
+    bottom: -15px;
+    color: #fff;
+    font-size: 0.8rem;
+    left: 0;
+    padding: 0.8rem 0.8rem 0.6rem;
+    position: relative;
+  }
+
+  .share-icons {
+    a {
+      text-decoration: none;
+      font-size: 1.3rem;
+      margin: 1rem 0.5rem;
+      cursor: pointer;
+    }
+  }
+}

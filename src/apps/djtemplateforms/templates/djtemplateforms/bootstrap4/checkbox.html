@@ -1,0 +1,24 @@
+<div class="form-group {{ col|default:'col-lg-12' }}{% if klass_container %} {{ klass_container }}{% endif %}">
+  <label class="custom-control custom-checkbox">
+    <input id="{{ field.id_for_label }}"
+           class="custom-control-input{% if field.errors %} is-invalid{% endif %}{% if klass %} {{ klass }}{% endif %}"
+           type="{{ ftype }}"
+           name="{{ field.name }}"
+           {% if field.field.required %}required{% endif %}
+           {% if field.value %}checked{% endif %}
+           {% if attrs %} {% include attrs_file %}{% endif %}
+           {% if extras %}{{ extras }}{% endif %}
+    >
+    <span class="custom-control-indicator"></span>
+    <span class="custom-control-description">
+      {{ label|default:field.label }}
+      <small><sup class="asterisk-field">*</sup></small>
+    </span>
+  </label>
+  {% if field.help_text %}
+    <small class="help-block">{{ field.help_text|safe }}</small>
+  {% endif %}
+  {% if field.errors %}
+    {{ field.errors }}
+  {% endif %}
+</div>

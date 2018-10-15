@@ -1,0 +1,17 @@
+[Unit]
+Description=gunicorn daemon
+After=syslog.target
+After=network.target
+
+[Service]
+PIDFile=/run/gunicorn/pid
+User=snicoper
+Group=snicoper
+WorkingDirectory=/var/webapps/snicoper.com/bin/
+ExecStart=/bin/bash gunicorn_start.sh
+ExecReload=/bin/kill -s HUP $MAINPID
+ExecStop=/bin/kill -s TERM $MAINPID
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,9 @@
+Hola! te enviamos este mensaje desde {{ site.domain }} por que {{ name }} te ha recomendado el siguiente articulo que quizás te pueda interesar.
+
+{{ protocol }}{{ site.domain }}{{ article.get_absolute_url }}
+
+{% if message %}
+{{ name }} te ha añadido el siguiente mensaje.
+
+{{ message }}
+{% endif %}

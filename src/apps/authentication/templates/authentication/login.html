@@ -1,0 +1,36 @@
+{% extends "authentication/base_authentication.html" %}
+{% load djtemplateforms_tags %}
+
+{% block meta_description %}Iniciar sesión{% endblock meta_description %}
+{% block head_title %}- Iniciar sesión{% endblock head_title %}
+
+{% block page_title %}
+  <section class="jumbotron">
+    <section class="container">
+      <h1>Iniciar sesión</h1>
+    </section>
+  </section>
+{% endblock page_title %}
+
+{% block content %}
+  <section class="container">
+    <section class="row">
+      <div class="col-lg-8 m-auto">
+        <form method="post" action="">
+          <div class="form-row">
+            {% csrf_token %}
+            {% form form %}
+            <div class="col-12">
+            <button class="btn btn-primary" type="submit">Iniciar sesión</button>
+              <a class="btn btn-success" href="{% url 'authentication:register' %}">Crear cuenta</a>
+              <a class="btn btn-outline-warning" href="{% url 'authentication:password_reset' %}">
+                ¿Ha olvidado su contraseña?
+              </a>
+            </div>
+          </div>
+
+        </form>
+      </div>
+    </section>
+  </section>
+{% endblock content %}

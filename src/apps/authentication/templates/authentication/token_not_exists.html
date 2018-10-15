@@ -1,0 +1,24 @@
+{% extends "authentication/base_authentication.html" %}
+
+{% block meta_description %}Fallo en la validación{% endblock meta_description %}
+{% block head_title %}- Fallo en la validación{% endblock head_title %}
+
+{% block page_title %}
+  <section class="jumbotron">
+    <section class="container">
+      <h1>Fallo en la validación</h1>
+    </section>
+  </section>
+{% endblock page_title %}
+
+{% block content %}
+  <section class="container">
+    <section class="row">
+      <div class="col-lg-8 m-auto">
+        <p>La validación no ha sido posible, quizá haya caducado. Intenta en crear de nuevo una
+          <a href="{% url 'authentication:register' %}">cuenta</a> y si ves que el problema continua,
+          por favor ponte en <a href="{% url 'contact:contact' %}">contacto</a> con nosotros.</p>
+      </div>
+    </section>
+  </section>
+{% endblock content %}

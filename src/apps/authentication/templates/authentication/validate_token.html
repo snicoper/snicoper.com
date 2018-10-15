@@ -1,0 +1,21 @@
+{% extends "authentication/base_authentication.html" %}
+
+{% block meta_description %}Cuenta creada con éxito{% endblock meta_description %}
+{% block head_title %}- Cuenta creada con éxito{% endblock head_title %}
+
+{% block page_title %}
+  <section class="jumbotron">
+    <section class="container">
+      <h1>Cuenta creada con éxito</h1>
+    </section>
+  </section>
+{% endblock page_title %}
+
+{% block content %}
+  <section class="row">
+    <div class="col-lg-8 m-auto">
+      <p>La cuenta se ha creado con éxito, ahora ya puedes
+        <a href="{% url 'authentication:login' %}">Iniciar sesión</a></p>
+    </div>
+  </section>
+{% endblock content %}

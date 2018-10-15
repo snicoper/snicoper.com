@@ -1,0 +1,24 @@
+{% extends "authentication/base_authentication.html" %}
+
+{% block meta_description %}Nuevo registro correcto{% endblock meta_description %}
+{% block head_title %}- Nuevo registro correcto{% endblock head_title %}
+
+{% block page_title %}
+  <section class="jumbotron">
+    <section class="container">
+      <h1>¡Solo falta un ultimo paso!</h1>
+    </section>
+  </section>
+{% endblock page_title %}
+
+{% block content %}
+  <section class="container">
+    <section class="row">
+      <div class="col-lg-8 m-auto">
+        <p>En breve recibirás un email para poder confirmar tu correo.</p>
+        <p>Comprueba tu <strong>correo no deseado</strong> si ves que tarda mucho.</p>
+        <p>Gracias por registrarte en <strong>{{ SITE.name }}</strong></p>
+      </div>
+    </section>
+  </section>
+{% endblock content %}

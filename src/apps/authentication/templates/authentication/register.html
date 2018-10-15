@@ -1,0 +1,35 @@
+{% extends "authentication/base_authentication.html" %}
+{% load djtemplateforms_tags %}
+
+{% block meta_description %}Registro nueva cuenta{% endblock meta_description %}
+{% block head_title %}- Registro nueva cuenta{% endblock head_title %}
+
+{% block page_title %}
+  <section class="jumbotron">
+    <section class="container">
+      <h1>Registro nueva cuenta</h1>
+    </section>
+  </section>
+{% endblock page_title %}
+
+{% block content %}
+  <section class="container">
+    <section class="row">
+      <div class="col-lg-8 m-auto">
+        <form method="post" action="">
+          {% csrf_token %}
+          <div class="form-row">
+            {% form form %}
+
+            <div class="col-12">
+              <button class="btn btn-primary" type="submit">Registro</button>
+              <a class="btn btn-success" href="{% url 'authentication:login' %}">
+                ¿Tienes una cuenta?
+              </a>
+            </div>
+          </div>
+        </form>
+      </div>
+    </section>
+  </section>
+{% endblock content %}

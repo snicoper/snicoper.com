@@ -1,0 +1,8 @@
+.bg-primary-alter {
+  background-color: theme-color("primary-alter");
+  color: $white;
+}
+.bg-primary-alter { color: theme-color("primary-alter"); }
+
+.bg-purple { background-color: theme-color("purple"); }
+.text-purple { color: theme-color("purple"); }

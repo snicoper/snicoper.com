@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block meta_description %}Lista de mensajes{% endblock meta_description %}
+{% block head_title %} - Lista de mensajes{% endblock head_title %}
+
+{% block page_title %}
+  <section class="jumbotron">
+    <section class="container">
+      <h1>Lista de mensajes</h1>
+    </section>
+  </section>
+{% endblock page_title %}
+
+{% block content %}
+  <section class="container">
+    <section class="row">
+      <div class="col-lg-10 m-auto">
+        {% if message_list %}
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Asunto</th>
+                <th>Email</th>
+                <th class="center-align">Registrado</th>
+                <th class="center-align">Leído</th>
+                <th>Fecha</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for message in message_list %}
+                <tr>
+                  <td>
+                    <a href="{% url 'contact:message_detail' pk=message.pk %}">{{ message.subject }}</a>
+                  </td>
+                  <td>{{ message.email }}</td>
+                  <td>
+                    {% if message.is_register %}
+                      <i class="material-icons md-4 text-success">check_circle</i>
+                    {% else %}
+                      <i class="material-icons md-4 text-danger">cancel</i>
+                    {% endif %}
+                  </td>
+                  <td>
+                    {% if message.read %}
+                      <i class="material-icons md-4 text-success">check_circle</i>
+                    {% else %}
+                      <i class="material-icons md-4 text-danger">cancel</i>
+                    {% endif %}
+                  </td>
+                  <td>{{ message.create_at|date:"SHORT_DATETIME_FORMAT" }}</td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        {% else %}
+          <p>No hay mensajes para mostrar</p>
+        {% endif %}
+
+        {% include "_pagination.html" %}
+      </div>
+    </section>
+  </section>
+{% endblock content %}

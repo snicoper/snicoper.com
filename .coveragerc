@@ -1,0 +1,6 @@
+[run]
+include = src/*
+branch = True
+omit =
+    *migrations*
+

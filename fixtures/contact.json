@@ -1,0 +1,26 @@
+[
+{
+  "model": "contact.contactmessage",
+  "pk": 1,
+  "fields": {
+    "subject": "Prueba",
+    "message": "rrr",
+    "email": "snicoper@snicoper.com",
+    "read": true,
+    "is_register": true,
+    "create_at": "2017-11-17T21:48:00.695Z"
+  }
+},
+{
+  "model": "contact.contactmessage",
+  "pk": 2,
+  "fields": {
+    "subject": "Prueba 2",
+    "message": "Hello 2",
+    "email": "snicoper@snicoper.com",
+    "read": true,
+    "is_register": true,
+    "create_at": "2017-11-17T21:49:09.623Z"
+  }
+}
+]

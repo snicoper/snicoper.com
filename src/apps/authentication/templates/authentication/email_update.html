@@ -1,0 +1,32 @@
+{% extends "authentication/base_authentication.html" %}
+{% load djtemplateforms_tags %}
+
+{% block meta_description %}Actualizar email{% endblock meta_description %}
+{% block head_title %}- Actualizar email{% endblock head_title %}
+
+{% block page_title %}
+  <section class="jumbotron">
+    <section class="container">
+      <h1>Actualizar email</h1>
+    </section>
+  </section>
+{% endblock page_title %}
+
+{% block content %}
+  <section class="container">
+    <section class="row">
+      <div class="col-lg-8 m-auto">
+        <form method="post" action="">
+          {% csrf_token %}
+          <div class="form-row">
+            {% form form %}
+
+            <div class="col-12">
+              <button class="btn btn-primary" type="submit">Actualizar</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </section>
+  </section>
+{% endblock content %}

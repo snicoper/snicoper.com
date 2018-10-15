@@ -1,0 +1,61 @@
+<footer class="footer">
+  <section class="container">
+    <section class="row">
+      <div class="col-lg-3">
+        <ul class="links list-unstyled">
+          <li><a href="{% url 'pages:about' %}">Quien soy</a></li>
+          <li><a href="{% url 'contact:contact' %}">Contacta</a></li>
+          <li><a href="{% url 'pages:cookie_consent' %}">Política de Cookies</a></li>
+        </ul>
+      </div>
+
+      <div class="col-lg-3">
+        <ul class="links list-unstyled">
+          <li><a href="{% url 'blog:index' %}">Blog</a></li>
+          <li><a href="{% url 'blog:tag_list' %}">Etiquetas</a></li>
+          <li><a href="{% url 'blog:archive' %}">Archivo</a></li>
+          <li><a href="{% url 'blog:feed' %}">Feeds (Blog)</a></li>
+        </ul>
+      </div>
+
+      <div class="col-lg-6">
+        <form method="post" action="{% url 'blog:article_suscriber_register' %}?next={{ request.get_full_path }}">
+          {% csrf_token %}
+          <div class="input-group">
+            <input class="form-control"
+                   type="email"
+                   name="user_email"
+                   placeholder="Recibir alertas de nuevos artículos por correo"
+            >
+            <span class="input-group-btn">
+              <button class="btn btn-primary btn-sm" type="submit">
+                <i class="material-icons">email</i>
+              </button>
+            </span>
+          </div>
+        </form>
+
+        <!-- social accounts -->
+        <div class="share-icons text-center mt-4">
+          <a target="_blank" href="https://twitter.com/snicoper">
+            <i class="fa fa-twitter" aria-hidden="true"></i>
+          </a>
+          <a target="_blank" href="https://github.com/snicoper/">
+            <i class="fa fa-github-alt" aria-hidden="true"></i>
+          </a>
+          <a target="_blank" href="{% url 'blog:feed' %}">
+            <i class="fa fa-rss" aria-hidden="true"></i>
+          </a>
+        </div><!-- end social accounts -->
+      </div>
+    </section>
+  </section>
+
+  <section class="row copy">
+    <div class="col-md-12">
+      <section class="container">
+        &copy; 2015-{% now "Y" %} {{ SITE.name }} - Salvador Nicolas &lt;snicoper@snicoper.com&gt;
+      </section>
+    </div>
+  </section>
+</footer>

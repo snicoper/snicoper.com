@@ -1,0 +1,6 @@
+# Archivo requirements prod
+
+## includes the base.txt requirements file
+-r base.txt
+
+gunicorn==19.7.1

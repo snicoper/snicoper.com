@@ -1,0 +1,27 @@
+{% extends "blog/base_blog.html" %}
+
+{% block meta_description %}Archivo de artículos {{ year|date:'Y' }}{% endblock meta_description %}
+{% block head_title %}- Archivo de artículos {{ year|date:'Y' }}{% endblock head_title %}
+
+{% block page_title %}
+  <section class="jumbotron">
+    <section class="container">
+      <h1>
+        <i class="material-icons md-7">date_range</i>
+        Artículos publicados en {{ year|date:"Y" }}
+      </h1>
+    </section>
+  </section>
+{% endblock page_title %}
+
+{% block blog_content %}
+  <section class="container">
+    <div class="col-md-8 m-auto">
+      {% include "blog/_article_archive.html" with object_list=object_list %}
+
+      <div class="mt-4">
+        <a class="btn btn-primary" href="{% url 'blog:archive' %}">Archivo</a>
+      </div>
+    </div>
+  </section>
+{% endblock blog_content %}

@@ -1,0 +1,18 @@
+.jumbotron-home {
+  background-color: theme-color("secondary");
+  background-image: url("../img/home/pexels.jpeg");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  color: $white;
+  min-height: 300px;
+  text-shadow: 2px 2px #000;
+
+  h1 {
+    font-size: 3rem;
+  }
+
+  .lead {
+    color: #f57c00;
+    font-weight: bold;
+  }
+}

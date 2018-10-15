@@ -1,0 +1,42 @@
+// Añade un poco mas de padding entre las opciones.
+
+// Color del Label
+.form-control-label {
+  color: darken(theme-color("primary"), 20%);
+}
+
+// Asterisco en el label
+.asterisk-field {
+  color: theme-color("danger");
+}
+
+// Errores a nivel de form.
+form {
+  ul.errorlist {
+    color: theme-color("danger");
+    font-size: 0.8rem;
+    list-style: none;
+    margin-bottom: 0;
+    padding: 0;
+
+    &.nonfield {
+      list-style: circle;
+      background-color: #ffebee;
+      border: 1px solid #ffcdd2;
+      padding: 0.6rem;
+      padding-left: 1.5rem;
+      margin: 0.5rem;
+      display: block;
+      width: 100%;
+    }
+  }
+}
+
+.help-block {
+  font-size: 0.8rem;
+  color: gray("600");
+
+  ul {
+    padding-left: 1rem;
+  }
+}

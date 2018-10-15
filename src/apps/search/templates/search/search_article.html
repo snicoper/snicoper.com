@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block meta_description %}Buscar en artículos{% endblock meta_description %}
+{% block head_title %} - Buscar en artículos{% endblock head_title %}
+
+{% block content %}
+  <section class="container">
+      <!-- form -->
+    <form method="get" action="{% url 'search:articles' %}">
+      <section class="row mt-4">
+        <div class="col-lg-8 m-auto">
+          <div class="input-group">
+            <input id="q"
+                   class="form-control"
+                   name="q"
+                   type="text"
+                   placeholder="Buscar..."
+                   value="{{ query }}"
+            >
+            <span class="input-group-btn">
+              <button class="btn btn-primary" type="submit">
+                <i class="material-icons">search</i>
+              </button>
+            </span>
+          </div>
+        </div>
+      </section>
+    </form>
+
+    <section class="row mt-4">
+      {% if query %}
+        <div class="col-lg-10 m-auto">
+          {% if page_obj.object_list %}
+            <h3>
+              Resultados encontrados <span class="badge badge-pill badge-success">{{ page_obj.paginator.count }}</span>
+            </h3>
+          {% else %}
+            <h3>No se han encontrado resultados</h3>
+          {% endif %}
+        </div>
+      {% endif %}
+
+      {% if query and page_obj.object_list %}
+        <div class="col-lg-10 m-auto">
+          {% for result in page_obj.object_list %}
+            <div class="list-group">
+              <a class="list-group-item" href="{{ result.object.get_absolute_url }}">{{ result.title }}</a>
+            </div>
+          {% endfor %}
+        </div>
+
+        <div class="col-12">{% include "_pagination.html" %}</div>
+      {% endif %}
+    </section>
+  </section>
+{% endblock content %}

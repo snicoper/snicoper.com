@@ -1,0 +1,5 @@
+{{ username }} gracias por registrarte en {{ site_name }}.
+
+Para completar el registro, simplemente visita en el siguiente enlace
+
+{{ url_validate_token }}

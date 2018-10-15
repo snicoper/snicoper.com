@@ -1,0 +1,65 @@
+{% extends "blog/base_blog.html" %}
+
+{% block meta_description %}Pagina de inicio del Blog - Lista de artículos{% endblock meta_description %}
+{% block head_title %} - Blog lista de artículos{% endblock head_title %}
+
+{% block blog_content %}
+  <section class="container">
+    <section class="row">
+      {% for article in article_list %}
+        <div class="col-md-6 col-lg-4">
+          <div class="card card-medium mt-4 z-depth-1 border-0">
+            <a href="{% url 'blog:article_detail' article.slug %}">
+              <img class="card-img-top"
+                   src="{{ MEDIA_URL }}{{ article.default_tag.thumbnail }}"
+                   alt="{{ article.title }}"
+              >
+            </a>
+
+            <div class="card-block d-flex flex-column p-0">
+              <!-- Bloque información -->
+              <small class="bg-primary-alter p-2 text-white">
+                <i class="material-icons md-3">person</i> {{ article.owner.username }}
+
+                <span data-toggle="tooltip" title="{{ article.create_at|date:'SHORT_DATE_FORMAT' }}">
+                  <i class="material-icons md-3 pl-1">access_time</i> {{ article.create_at|timesince }}
+                </span>
+
+                {% if DISQUS_SHORTNAME %}
+                  <a href="{{ article.get_absolute_url }}#disqus_thread">
+                    <span class="disqus-comment-count" data-disqus-identifier="{{ article.id }}"></span>
+                  </a>
+                {% endif %}
+
+                {% if perms.article_can_edit %}
+                  <span data-toggle="tooltip" title="Visitas">
+                    <i class="material-icons md-3 pl-1">remove_red_eye</i> {{ article.views }}
+                  </span>
+
+                  <span data-toggle="tooltip" title="Votos positivos">
+                    <i class="material-icons md-3 pl-1">thumb_up</i>
+                    {{ article.article_rate.positives }}
+                  </span>
+                {% endif %}
+              </small><!-- end Bloque información -->
+
+              <h5 class="card-title px-2 mt-2">
+                <a href="{% url 'blog:article_detail' article.slug %}">{{ article.title }}</a>
+              </h5>
+
+              <div class="mt-auto pb-2 pl-2">
+                {% for tag in article.tags.all %}
+                  <a class="badge badge-primary" href="{% url 'blog:articles_by_tag' tag.slug %}">
+                    {{ tag.title }}
+                  </a>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </section>
+
+    <div class="col-12 mt-4">{% include "_pagination.html" %}</div>
+  </section>
+{% endblock blog_content %}

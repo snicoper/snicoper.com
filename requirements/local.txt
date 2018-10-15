@@ -1,0 +1,20 @@
+# Archivo requirements local
+
+## includes the base.txt requirements file
+-r base.txt
+
+django-extensions==2.0.7
+ipython==6.3.1
+Sphinx==1.7.2
+Werkzeug==0.14.1
+
+# Linters
+pycodestyle==2.4.0
+pydocstyle==2.1.1
+
+# utils
+isort==4.3.4
+tox==3.0.0
+
+# test
+coverage==4.5.1

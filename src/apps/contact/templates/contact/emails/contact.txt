@@ -1,0 +1,5 @@
+Un usuario {{ register }} con el email {{ user_email }}, ha enviado un mensaje de contacto con el siguiente mensaje:
+
+Tema: {{ subject }}
+
+Mensaje: {{ message }}

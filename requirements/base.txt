@@ -1,0 +1,11 @@
+# Archivo requirements base
+
+django-debug-toolbar==1.9.1
+django-haystack==2.8.1
+Django==2.0.4
+djangorestframework==3.8.2
+markdown2==2.3.5
+Pillow==4.3.0
+psycopg2-binary==2.7.4
+pytz==2018.4
+Whoosh==2.7.4

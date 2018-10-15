@@ -1,0 +1,56 @@
+.navbar {
+  @extend .z-depth-2;
+
+  .navbar-brand {
+    color: theme-color("primary-alter");
+  }
+
+  li {
+    > a {
+      color: theme-color("primary-alter");
+
+      &:hover {
+        color: theme-color("primary");
+      }
+    }
+  }
+}
+
+// Input search en navbar
+.navbar-search {
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 2000;
+
+  .form-control {
+    border: 0;
+    height: 60px;
+  }
+
+  .close {
+    position: absolute;
+    right: 30px;
+    top: 18px;
+  }
+}
+
+// Drop down login.
+#navbar-form-login {
+  .input-group-addon {
+    background-color: theme-color("dark");
+    color: $white;
+  }
+}
+
+@include media-breakpoint-down(md) {
+  // Ocultar caret en la barra superior.
+  .nav-item {
+    &.dropdown {
+      .dropdown-toggle::after {
+        display: none;
+      }
+    }
+  }
+}

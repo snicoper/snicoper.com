@@ -1,0 +1,16 @@
+<div class="navbar-search hidden">
+  <section class="row">
+    <div class="col-12">
+      <form method="get" action="{% url 'search:articles' %}">
+        <div class="form-group">
+          <span class="close navbar-search-close">&times;</span>
+          <input class="form-control navbar-search-input"
+                 name="q"
+                 type="search"
+                 placeholder="Escribe y pulsa intro..."
+                 value="{{ request.GET.q }}">
+        </div>
+      </form>
+    </div>
+  </section>
+</div>

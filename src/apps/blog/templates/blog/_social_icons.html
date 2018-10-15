@@ -1,0 +1,35 @@
+<section class="row mt-4">
+  <div class="col-lg-9">
+    <div class="text-center">
+      <div class="btn-social">
+        <a class="facebook" onclick="window.open('http://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri }}&amp;title={{ article.title }}', '', 'width=500,height=300');">
+          <i class="fa fa-facebook" aria-hidden="true"></i>
+        </a>
+      </div>
+
+      <div class="btn-social">
+        <a class="twitter" onclick="window.open('http://twitter.com/intent/tweet?status={{ article.title }}+{{ request.build_absolute_uri }}', '', 'width=500,height=300');">
+          <i class="fa fa-twitter" aria-hidden="true"></i>
+        </a>
+      </div>
+
+      <div class="btn-social">
+        <a class="gplus" onclick="window.open('https://plus.google.com/share?url={{ request.build_absolute_uri }}', '', 'width=500,height=300');">
+          <i class="fa fa-google-plus" aria-hidden="true"></i>
+        </a>
+      </div>
+
+      <div class="btn-social">
+        <a class="linkedin" onclick="window.open('http://www.linkedin.com/shareArticle?mini=true&url={{ request.build_absolute_uri }}&amp;title={{ article.title|urlencode }}&amp;source={{ SITE.domain }}', '', 'width=500,height=300');">
+          <i class="fa fa-linkedin" aria-hidden="true"></i>
+        </a>
+      </div>
+
+      <div class="btn-social">
+        <a class="envelope" href="{% url 'blog:article_recommend' article.slug %}">
+          <i class="fa fa-envelope" aria-hidden="true"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

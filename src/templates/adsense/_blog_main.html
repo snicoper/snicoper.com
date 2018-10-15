@@ -1,0 +1,26 @@
+{% if not debug %}
+  <section class="container mt-4">
+    <section class="row">
+      <div class="col-md-10 col-lg-8 offset-md-1 offset-lg-2">
+        <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-1079279802884664"
+            data-ad-slot="7063143839"
+            data-ad-format="auto"></ins>
+        <script>
+          (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+      </div>
+    </section>
+  </section>
+{% elif debug and ADSENSE_IMAGES_FAKE %}
+  <section class="container mt-4">
+    <section class="row">
+      <div class="col-md-10 col-lg-8 offset-md-1 offset-lg-2">
+        <div class="text-center">
+          <img src="http://fakeimg.pl/350x100/" style="width: 90%; height: 100px;" alt="fake">
+        </div>
+      </div>
+    </section>
+  </section>
+{% endif %}

@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+
+{% block meta_description %}Actualizar avatar{% endblock meta_description %}
+{% block head_title %}- Actualizar avatar{% endblock head_title %}
+
+{% block page_title %}
+  <section class="jumbotron">
+    <section class="container">
+      <h1>Actualizar avatar</h1>
+    </section>
+  </section>
+{% endblock page_title %}
+
+{% block content %}
+  <section class="container">
+    <section class="row">
+      <div class="col-lg-8 m-auto">
+        <div class="text-center">
+          <img id="img-avatar"
+               class="img-fluid z-depth-1"
+               src="{{ user.get_avatar }}"
+               alt="Avatar {{ user.username }}"
+               width="120"
+          >
+          <hr>
+        </div>
+
+        <form method="post" action="" enctype="multipart/form-data">
+          {% csrf_token %}
+          <div class="form-group">
+              <label class="form-control-label" for="id_avatar">
+                {% if user.avatar %}Cambiar avatar{% else %}Añadir avatar{% endif %}
+              </label>
+              <hr class="mt-1">
+              <input id="id_avatar"
+                     class="form-control-file"
+                     type="file"
+                     name="avatar"
+              >
+            </div>
+
+            {% if has_avatar %}
+              <div class="form-check">
+                <label class="form-check-label">
+                  <input class="form-check-input" name="delete_avatar" type="checkbox">
+                  Eliminar avatar
+                </label>
+              </div>
+            {% endif %}
+
+            <div class="mt-4">
+              <button class="btn btn-primary" type="submit">Actualizar</button>
+              <a class="btn btn-success" href="{% url 'accounts:profile' %}">Volver</a>
+            </div>
+        </form>
+      </div>
+    </section>
+  </section>
+{% endblock content %}
+
+{% block scripts %}
+  <script>
+    $(document).ready(function() {
+      $('#id_avatar').change(function() {
+        readImagePreview('#img-avatar', this);
+      });
+    });
+  </script>
+{% endblock scripts %}

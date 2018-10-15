@@ -1,0 +1,117 @@
+{% extends "stats/base_stats.html" %}
+
+{% block page_title %}
+  <section class="jumbotron">
+    <section class="container">
+      <h1>Estadísticas {{ SITE.name }}</h1>
+    </section>
+  </section>
+{% endblock page_title %}
+
+{% block stats_content %}
+  <section class="container">
+    <section class="row">
+      <!-- Usuarios -->
+      <div class="col-lg-6">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <td class="caption-title text-center" colspan="2">
+                <strong>Usuarios</strong>
+              </td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th>Numero de usuarios</th>
+              <td class="text-right small"><span class="badge badge-primary">{{ num_users }}</span></td>
+            </tr>
+            <tr>
+              <th>Ultimo registro</th>
+              <td class="text-right small">{{ last_register.username }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div><!-- end Usuarios -->
+
+      <!-- Etiquetas -->
+      <div class="col-lg-6">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <td class="caption-title text-center" colspan="2">
+                <strong>Etiquetas</strong>
+              </td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th>Numero de etiquetas</th>
+              <td class="text-right small"><span class="badge badge-primary">{{ total_tags }}</span></td>
+            </tr>
+            <tr>
+              <th>Mas vista</th>
+              <td class="text-right small">
+                {{ tag_most_viewed.title }}
+                <span class="badge badge-primary">{{ tag_most_viewed.views }}</span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div><!-- end Etiquetas -->
+
+      <!-- Artículos -->
+      <div class="col-lg-6">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <td class="caption-title text-center" colspan="2">
+                <strong>Artículos</strong>
+              </td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th>Numero de artículos</th>
+              <td class="text-right small"><span class="badge badge-primary">{{ total_articles }}</span></td>
+            </tr>
+            <tr>
+              <th>Artículos total vistos</th>
+              <td class="text-right small"><span class="badge badge-primary">{{ total_views.views__sum|default:0 }}</span></td>
+            </tr>
+            <tr>
+              <th>Mas vista</th>
+              <td class="text-right small">
+                {{ article_most_viewed.title }}
+                <span class="badge badge-primary">{{ article_most_viewed.views }}</span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div><!-- end Artículos -->
+
+      <!-- Artículos con mas votos -->
+      <div class="col-lg-6">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <td class="caption-title text-center" colspan="2">
+                <strong>Artículos con mas votos</strong>
+              </td>
+            </tr>
+          </thead>
+          <tbody>
+            {% for article in  article_most_voted %}
+              <tr>
+                <td>{{ article.title }}</td>
+                <td>{{ article.article_rate.positives }}</td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div><!-- end Artículos con mas votos -->
+    </section>
+  </section>
+{% endblock stats_content %}
+
+

@@ -1,0 +1,33 @@
+{% extends "blog/base_blog.html" %}
+
+{% block meta_description %}Archivo de artículos{% endblock meta_description %}
+{% block head_title %} - Archivo de artículos{% endblock head_title %}
+
+{% block page_title %}
+  <section class="jumbotron">
+    <section class="container">
+      <h1><i class="material-icons md-7">date_range</i> Archivo de artículos</h1>
+    </section>
+  </section>
+{% endblock page_title %}
+
+{% block blog_content %}
+  <section class="container">
+    <section class="row">
+      <div class="col-md-8 m-auto">
+        {% for y, months in archive %}
+          <div class="list-group mb-3">
+            <a class="list-group-item active" href="{% url 'blog:archive_year' y.year %}">
+              <i class="material-icons text-middle">date_range</i> {{ y.year }}
+            </a>
+            {% for m in months %}
+              <a class="list-group-item" href="{% url 'blog:archive_month' y.year m|date:'m' %}">
+                <i class="material-icons text-middle">chevron_right</i> {{ m|date:'F' }}
+              </a>
+            {% endfor %}
+          </div>
+        {% endfor %}
+      </div>
+    </section>
+  </section>
+{% endblock blog_content %}

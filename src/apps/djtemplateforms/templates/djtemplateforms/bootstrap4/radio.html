@@ -1,0 +1,30 @@
+<div class="custom-controls-stacked d-block my-3 {{ col|default:'col-lg-12' }}{% if klass_container %} {{ klass_container }}{% endif %}">
+  <div class="mb-2 form-control-label">
+    {{ label|default:field.label }}
+    {% if field.field.required %}
+      <small><sup class="asterisk-field">*</sup></small>
+    {% endif %}
+  </div>
+  {% for choice in field.field.choices %}
+    <label class="custom-control custom-radio">
+      <input id="{{ field.id_for_label }}{{ forloop.counter0 }}"
+             class="custom-control-input{% if field.errors %} is-invalid{% endif %}{% if klass %} {{ klass }}{% endif %}"
+             name="{{ field.name }}"
+             type="{{ ftype }}"
+             value="{{ choice.0 }}"
+             {% if field.value == choice.0 %}checked{% endif %}
+             {% if field.field.required %}required{% endif %}
+             {% if attrs %} {% include attrs_file %}{% endif %}
+             {% if extras %}{{ extras }}{% endif %}
+      >
+      <span class="custom-control-indicator"></span>
+      <span class="custom-control-description">{{ choice.1 }}</span>
+    </label>
+  {% endfor %}
+  {% if field.help_text %}
+    <small class="help-block">{{ field.help_text|safe }}</small>
+  {% endif %}
+  {% if field.errors %}
+    {{ field.errors }}
+  {% endif %}
+</div>

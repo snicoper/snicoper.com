@@ -1,0 +1,66 @@
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  padding-top: 54px;
+  color: $body-color;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
+[v-cloak] {
+  display: none;
+}
+
+.hidden {
+  display: none !important;
+  visibility: hidden !important;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+button {
+  @extend .cursor-pointer;
+}
+
+@include media-breakpoint-down(xs) {
+  // Eliminar paddings izquierdo y derecho en xs.
+  .px-xs-none {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+}
+
+@include media-breakpoint-down(md) {
+  // En <= md usar todo el ancho de la ventana.
+  .container {
+    width: 98%;
+  }
+}
+
+.caption-title {
+  background-color: theme-color("primary");
+  padding: 0.5rem;
+  color: $white;
+}
+
+// Z-levels
+.z-depth-0 {
+  box-shadow: none !important;
+}
+
+.z-depth-1 {
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+}
+
+.z-depth-2 {
+  box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.12);
+}
+
+.z-depth-3 {
+  box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.2);
+}

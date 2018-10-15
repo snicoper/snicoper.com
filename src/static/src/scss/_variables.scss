@@ -1,0 +1,170 @@
+// Font font-awesome.
+$fa-font-path: "../fonts/font-awesome" !default;
+
+// Font material-icons.
+$material-icons-font-path: "../fonts/material-icons/" !default;
+
+// Font Roboto.
+$roboto-font-path: '../fonts/roboto/';
+
+// paths lightgallery
+$lg-path-fonts: '../fonts/lightgallery' !default;
+$lg-path-images: '../img/lightgallery' !default;
+
+// Social colors.
+// https://designpieces.com/2012/12/social-media-colours-hex-and-rgb/
+$facebook-color: rgb(59, 89, 152) !default;
+$twitter-color: rgb(85, 172, 238) !default;
+$gplus-color: rgb(221, 75, 57) !default;
+$pinterest-color: rgb(203, 32, 39) !default;
+$linkedin-color: rgb(0, 123, 181) !default;
+
+// Tipos de anuncio (Alquiler, Venta)
+$color-tipo-venta: #43a047 !default;
+$color-tipo-alquiler: #fb8c00 !default;
+
+// Estado (Obra nueva, buen estado, a reformar)
+$color-estado-obranueva: #43a047 !default;
+$color-estado-buenestado: #fb8c00 !default;
+$color-estado-areformar: #e53935 !default;
+
+// Colores de fondo segun el tipo de anuncio.
+$color-piso: #546e7a !default;
+$color-casa: #1e88e5 !default;
+$color-apartamento: #6d4c41 !default;
+$color-habitacion: #8e24aa !default;
+$color-terreno: #00897b !default;
+$color-parking: #c0ca33 !default;
+$color-industrial: #fb8c00 !default;
+$color-local: #00acc1 !default;
+
+// Colores para el genero, chico, chica.
+$color-chico: #0277bd !default;
+$color-chica: #7c4dff !default;
+$color-chicochica: #78909c !default;
+
+//
+// Override Bootstrap.
+//
+
+// Fonts.
+$font-family-sans-serif: "Roboto", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif !default;
+
+$font-size-base:              1rem !default; // Assumes the browser default, typically `16px`
+$font-size-lg:                ($font-size-base * 1.25) !default;
+$font-size-sm:                ($font-size-base * 0.875) !default;
+
+$h1-font-size:                $font-size-base * 2.5 !default;
+$h2-font-size:                $font-size-base * 2 !default;
+$h3-font-size:                $font-size-base * 1.75 !default;
+$h4-font-size:                $font-size-base * 1.5 !default;
+$h5-font-size:                $font-size-base * 1.25 !default;
+$h6-font-size:                $font-size-base !default;
+
+// stylelint-disable
+$white:    #fff !default;
+$gray-100: #f8f9fa !default;
+$gray-200: #e9ecef !default;
+$gray-300: #dee2e6 !default;
+$gray-400: #ced4da !default;
+$gray-500: #adb5bd !default;
+$gray-600: #868e96 !default;
+$gray-700: #495057 !default;
+$gray-800: #343a40 !default;
+$gray-900: #212529 !default;
+$black:    #000 !default;
+
+$grays: () !default;
+$grays: map-merge((
+  "100": $gray-100,
+  "200": $gray-200,
+  "300": $gray-300,
+  "400": $gray-400,
+  "500": $gray-500,
+  "600": $gray-600,
+  "700": $gray-700,
+  "800": $gray-800,
+  "900": $gray-900
+), $grays);
+
+$blue:    #007bff !default;
+$indigo:  #6610f2 !default;
+$purple:  #6f42c1 !default;
+$pink:    #e83e8c !default;
+$red:     #dc3545 !default;
+$orange:  #fd7e14 !default;
+$yellow:  #ffc107 !default;
+$green:   #28a745 !default;
+$teal:    #20c997 !default;
+$cyan:    #17a2b8 !default;
+
+$colors: () !default;
+$colors: map-merge((
+  "blue":       $blue,
+  "indigo":     $indigo,
+  "purple":     $purple,
+  "pink":       $pink,
+  "red":        $red,
+  "orange":     $orange,
+  "yellow":     $yellow,
+  "green":      $green,
+  "teal":       $teal,
+  "cyan":       $cyan,
+  "white":      $white,
+  "gray":       $gray-600,
+  "gray-dark":  $gray-800
+), $colors);
+
+$primary:       #0277bd !default; // $blue !default;
+$primary-alter: darken($primary, 15%) !default;
+$secondary:     #01579b !default;
+$success:       $green !default;
+$info:          $cyan !default;
+$warning:       $yellow !default;
+$danger:        $red !default;
+$light:         $gray-100 !default;
+$dark:          $gray-800 !default;
+
+$theme-colors: () !default;
+$theme-colors: map-merge((
+  "primary":        $primary,
+  "primary-alter":  $primary-alter,
+  "secondary":      $secondary,
+  "success":        $success,
+  "info":           $info,
+  "warning":        $warning,
+  "danger":         $danger,
+  "light":          $light,
+  "dark":           $dark
+), $theme-colors);
+
+// Colors.
+$body-color: $gray-700 !default;
+
+// Options.
+//
+// Quickly modify global styling by enabling or disabling optional features.
+$enable-caret:              true !default;
+$enable-rounded:            false !default;
+$enable-shadows:            false !default;
+$enable-gradients:          false !default;
+$enable-transitions:        true !default;
+$enable-hover-media-query:  false !default;
+$enable-grid-classes:       true !default;
+$enable-print-styles:       true !default;
+
+// Links.
+$link-hover-decoration: none !default;
+
+// Tooltips.
+$tooltip-max-width:                 200px !default;
+$tooltip-color:                     $white !default;
+$tooltip-bg:                        $primary !default;
+$tooltip-opacity:                   .9 !default;
+$tooltip-padding-y:                 3px !default;
+$tooltip-padding-x:                 8px !default;
+$tooltip-margin:                    0 !default;
+
+$tooltip-arrow-width:               5px !default;
+$tooltip-arrow-height:              5px !default;
+$tooltip-arrow-color:               $tooltip-bg !default;

@@ -1,0 +1,21 @@
+<ul class="list-group">
+  {% for article in object_list %}
+    <li class="list-group-item justify-content-between">
+      <div>
+        <i class="material-icons">chevron_right</i>
+        {{ article.create_at|date:'j F' }}
+        <a href="{% url 'blog:article_detail' article.slug %}">{{ article.title }}</a>
+      </div>
+
+      <div>
+        {% for tag in article.tags.all %}
+          <span class="badge badge-primary">
+            <a class="text-white" href="{% url 'blog:articles_by_tag' tag.slug %}">
+              {{ tag.title }}
+            </a>
+          </span>
+        {% endfor %}
+      </div>
+    </li>
+  {% endfor %}
+</ul>

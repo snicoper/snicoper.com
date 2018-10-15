@@ -1,0 +1,24 @@
+{% load i18n %}
+
+<!-- https://cookieconsent.insites.com/ -->
+<script>
+  window.addEventListener("load", function(){
+  window.cookieconsent.initialise({
+    "palette": {
+      "popup": {
+        "background": "#252e39"
+      },
+      "button": {
+        "background": "transparent",
+        "text": "#14a7d0",
+        "border": "#14a7d0"
+      }
+    },
+    "content": {
+      "message": "Usamos cookies propias y de terceros para mejorar tu experiencia y realizar tareas de analítica.",
+      "dismiss": "De acuerdo",
+      "link": "Leer mas",
+      "href": "/pages/cookie-consent/"
+    }
+  })});
+</script>

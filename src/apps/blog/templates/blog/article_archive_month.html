@@ -1,0 +1,49 @@
+{% extends "blog/base_blog.html" %}
+
+{% block meta_description %}Archivo de artículos {{ object_list.0.create_at|date:'F' }}/{{ object_list.0.create_at|date:'Y' }}{% endblock meta_description %}
+{% block head_title %} - Archivo de artículos {{ object_list.0.create_at|date:'F' }}/{{ object_list.0.create_at|date:'Y' }}{% endblock head_title %}
+
+{% block page_title %}
+  <section class="jumbotron">
+    <section class="container">
+      <h1>
+        <i class="material-icons md-7">date_range</i>
+        {% with object_list.0.create_at as create_at %}
+          {% with create_month=create_at|date:'F' create_year=create_at|date:'Y' %}
+            Artículos publicados en {{ create_month }} de {{ create_year }}
+          {% endwith %}
+        {% endwith %}
+      </h1>
+    </section>
+  </section>
+{% endblock page_title %}
+
+{% block blog_content %}
+  <section class="container">
+    <section class="row">
+      <div class="col-md-8 m-auto">
+        {% include "blog/_article_archive.html" with object_list=object_list %}
+
+        <!-- pagination -->
+        <div class="mt-4">
+          {% if previous_month %}
+            <a class="btn btn-outline-primary" href="{% url 'blog:archive_month' previous_month|date:'Y' previous_month|date:'m' %}">
+              {{ previous_month|date:'F Y' }}
+            </a>
+          {% endif %}
+
+          <a class="btn btn-outline-primary" href="{% url 'blog:archive' %}">Archivo</a>
+          <a class="btn btn-outline-primary" href="{% url 'blog:archive_year' object_list.0.create_at|date:'Y' %}">
+            {{ object_list.0.create_at|date:"Y" }}
+          </a>
+
+          {% if next_month %}
+            <a class="btn btn-outline-primary" href="{% url 'blog:archive_month' next_month|date:'Y' next_month|date:'m' %}">
+              {{ next_month|date:'F Y' }}
+            </a>
+          {% endif %}
+        </div><!-- end pagination -->
+      </div>
+    </section>
+  </section>
+{% endblock blog_content %}

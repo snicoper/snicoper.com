@@ -1,0 +1,39 @@
+{% extends "blog/base_blog.html" %}
+
+{% block meta_description %}Lista de Etiquetas en el Blog{% endblock meta_description %}
+{% block head_title %} - Etiquetas{% endblock head_title %}
+
+{% block page_title %}
+  <section class="jumbotron">
+    <section class="container">
+      <h1>Lista de Etiquetas</h1>
+    </section>
+  </section>
+{% endblock page_title %}
+
+{% block blog_content %}
+  <section class="container">
+    <section class="row">
+      <div class="col-lg-8 m-auto">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Etiquetas</th>
+              <th>Artículos</th>
+              <th>Vistas</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for tag in tag_list %}
+              <tr>
+                <td><a href="{% url 'blog:articles_by_tag' tag.slug %}">{{ tag.title }}</a></td>
+                <td>{{ tag.articles_count }}</td>
+                <td>{{ tag.views }}</td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </section>
+{% endblock blog_content %}

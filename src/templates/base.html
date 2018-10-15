@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="{% block meta_description %}Freelance Python/Django, desarrollo de aplicaciones Web{% endblock meta_description %}">
+  <meta name="keywords" content="Django,Python,Programación,Tutoriales,Linux,Gnu/Linux">
+  <meta name="author" content="Salvador Nicolas<snicoper@gmail.com>">
+  <link rel="shortcut icon" href="{% static 'favicon.ico' %}">
+  <title>{{ SITE.name }} {% block head_title %}{% endblock head_title %}</title>
+
+  <!-- CSS -->
+  <link href="{% static 'dist/css/main.css' %}" rel="stylesheet">
+
+  <!-- extras en header -->
+  {% block extra_heads %}{% endblock extra_heads %}
+
+  <!-- Google Analytics -->
+  {% if not debug %}
+    {% include "_google_analytics.html" %}
+  {% endif %}
+</head>
+<body>
+  <!-- header -->
+  {% block header %}
+    {% include "_header.html" %}
+
+    {% include "search/_navbar_search.html" %}
+  {% endblock header %}<!-- end header -->
+
+  <!-- content -->
+  <main>
+    <!-- Titulo de la pagina -->
+    {% block page_title %}{% endblock page_title %}
+    <!-- Contenido principal -->
+    {% block content %}{% endblock content %}
+  </main><!-- end content -->
+
+  <!-- footer -->
+  {% block footer %}
+    {% include "_footer.html" %}
+  {% endblock footer %}<!-- end footer -->
+
+  <!-- Botón de subir, solo se muestra >= tablets -->
+  <div class="to-top hidden d-none d-md-block"></div>
+
+  <!-- cookieconsent -->
+  {% include "_cookieconsent.html" %}
+
+  <!-- Javascript -->
+  <script src="{% static 'dist/js/third.js' %}"></script>
+  <script src="{% static 'dist/js/main.js' %}"></script>
+
+  <!-- mensajes -->
+  {% if messages %}
+    {% include "_messages.html" %}
+  {% endif %}
+
+  <!-- scripts -->
+  {% block scripts %}{% endblock scripts %}
+</body>
+</html>

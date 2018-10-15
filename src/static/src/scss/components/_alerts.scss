@@ -1,0 +1,44 @@
+.alert {
+  @include media-breakpoint-up(md) {
+    &.alert-icon {
+      position: relative;
+      padding-left: 35px;
+
+      &::before {
+        position: absolute;
+        font-family: "Material Icons";
+        font-size: 1.6rem;
+        left: 5px;
+        top: 6px;
+      }
+
+      &.alert-success {
+        &::before {
+          content: "\E86C";
+          color: theme-color("success");
+        }
+      }
+
+      &.alert-info {
+        &::before {
+          content: "\E88E";
+          color: theme-color("info");
+        }
+      }
+
+      &.alert-warning {
+        &::before {
+          content: "\E002";
+          color: theme-color("warning");
+        }
+      }
+
+      &.alert-danger {
+        &::before {
+          content: "\E000";
+          color: theme-color("danger");
+        }
+      }
+    }
+  }
+}

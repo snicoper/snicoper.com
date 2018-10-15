@@ -1,0 +1,9 @@
+Tasks:
+
+  ☐ Cuando informa de nuevo articulo en los suscritos, el titulo lo pone en ()
+  ✔ Añadir numero de positivos en lista de articulos. @done (11/27/2017, 12:20:44 AM)
+  ✔ Las tags en el blog, los links no salen en blanco. @done (11/25/2017, 6:06:06 PM)
+  ✔ Añadir votos positivos en los articulos. @done (11/25/2017, 4:30:24 PM)
+  ✔ Crear app stats @done (11/18/2017, 3:00:51 PM)
+  ✔ Gulp los watches no funcionan con el css, al modificar no archivo no recompila bien. @done (11/18/2017, 12:08:35 AM)
+  ✔ @critical  Cuando se crea un articulo, si esta en modo DEBUG = True, no me deja crearlo, pero en DEBUG = False si @done (11/17/2017, 10:50:50 PM)

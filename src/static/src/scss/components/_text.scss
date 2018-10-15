@@ -1,0 +1,10 @@
+.text-value {
+  @extend .text-muted;
+
+  font-size: 0.9rem;
+  text-align: right;
+}
+
+code {
+  background-color: gray("100") !important;
+}
